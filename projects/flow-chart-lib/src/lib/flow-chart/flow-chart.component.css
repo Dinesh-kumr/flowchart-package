@@ -1,0 +1,159 @@
+.d-flex {
+  display: flex;
+}
+
+.d-inline-flex {
+  display: inline-flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.grid-four-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.grid-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.f-grow {
+  flex-grow: 1;
+  flex: 1;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #8D99AE;
+  margin-left: 2px;
+}
+
+.card {
+  width: 320px;
+  min-height: 68px;
+  border-radius: 4px;
+  border: 1px solid #8D99AE;
+  margin: 0px 100px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.border-right {
+  border-right: 2px dashed;
+}
+
+.border-top {
+  border-top: 2px dashed;
+}
+
+.border-bottom {
+  border-bottom: 2px dashed;
+}
+
+.border-left {
+  border-left: 2px dashed;
+}
+
+.h-30 {
+  height: 30px;
+}
+
+.add-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(33, 158, 188, 0.1);
+
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.condition-label {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  border-radius: 20px;
+  margin: 0 20px;
+  padding: 1px 8px;
+  border: 2px solid;
+  transform: translate(0px, -50%);
+  background: rgba(244, 244, 244, 1);
+  color: rgba(128, 128, 128, 1);
+}
+
+.f-col {
+  flex-direction: column;
+}
+
+.input {
+  border: none;
+  text-align: center;
+  width: auto;
+  flex: 1;
+  margin: 5px;
+  background: none;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.option {
+  cursor: pointer;
+  width: 100px;
+}
+
+.option-wrapper {
+  top: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.border {
+  border: 1px solid #8D99AE;
+}
+
+.container-wrapper {
+  overflow-x: auto !important;
+}
+
+.container {
+  width: max-content;
+  margin: auto;
+}
+
+.delete-button {
+  width: 20px;
+  height: 20px;
+  top: 0;
+  right: 0;
+}

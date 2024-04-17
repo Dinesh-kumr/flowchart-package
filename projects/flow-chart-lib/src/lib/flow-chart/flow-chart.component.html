@@ -1,0 +1,111 @@
+<div class="container-wrapper d-flex f-col">
+  <div class="container">
+    <ng-container *ngTemplateOutlet="flowChart; context:{ arr: flowDataList}"></ng-container>
+    <ng-template #flowChart let-arr="arr">
+      <div *ngFor="let data of arr let i = index;" align="center">
+        <div *ngIf="i !== 0">
+          <ng-container *ngTemplateOutlet="addbutton;context: {arr: arr, index: i}"></ng-container>
+        </div>
+        <div class="card d-flex justify-center align-center relative">
+          <span class="absolute delete-button cursor-pointer" (click)="deleteSelectedElement(arr, i)">
+            <svg viewBox="0 0 512 512">
+              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"
+                d="M368 368L144 144M368 144L144 368" />
+            </svg>
+          </span>
+          <input class="input" type="text" [(ngModel)]="data.label">
+        </div>
+        <div *ngIf="data.condition && data.condition.length">
+          <div class="grid-two-column">
+            <div class="h-30"></div>
+            <div class="h-30 border-left"></div>
+          </div>
+          <div class="grid-four-column">
+            <div class="h-30"></div>
+            <div class="h-30 border-top border-left">
+              <div class="condition-label d-inline-flex">
+                <input class="input" type="text" [(ngModel)]="data.condition[0].label">
+              </div>
+            </div>
+            <div class="h-30 border-top">
+              <div class="condition-label d-inline-flex">
+                <input class="input" type="text" [(ngModel)]="data.condition[1].label">
+              </div>
+            </div>
+            <div class="h-30 border-left"></div>
+          </div>
+          <div class="grid-two-column">
+            <div align="center" class="d-flex f-col">
+              <ng-container
+                *ngTemplateOutlet="addbutton;context: {arr: data.condition[0].flowDataList, index: 0}"></ng-container>
+              <ng-container
+                *ngTemplateOutlet="flowChart; context:{ arr: data.condition[0].flowDataList}"></ng-container>
+              <ng-container>
+                <ng-container *ngIf="data.condition[0].flowDataList.length">
+                  <ng-container
+                    *ngTemplateOutlet="addbutton;context: {arr: data.condition[0].flowDataList, index: data.condition[0].flowDataList.length}"></ng-container>
+                </ng-container>
+              </ng-container>
+              <div class="f-grow d-flex">
+                <div class="f-grow"></div>
+                <div class="f-grow border-left"></div>
+              </div>
+            </div>
+            <div align="center" class="d-flex f-col">
+              <ng-container
+                *ngTemplateOutlet="addbutton;context: {arr: data.condition[1].flowDataList, index: 0}"></ng-container>
+              <ng-container
+                *ngTemplateOutlet="flowChart; context:{ arr: data.condition[1].flowDataList}"></ng-container>
+              <ng-container>
+                <ng-container *ngIf="data.condition[1].flowDataList.length">
+                  <ng-container
+                    *ngTemplateOutlet="addbutton;context: {arr: data.condition[1].flowDataList, index: data.condition[1].flowDataList.length}"></ng-container>
+                </ng-container>
+              </ng-container>
+              <div class="f-grow d-flex">
+                <div class="f-grow"></div>
+                <div class="f-grow border-left"></div>
+              </div>
+            </div>
+          </div>
+          <div class="grid-four-column">
+            <div class="h-30"></div>
+            <div class="h-30 border-bottom border-left">
+            </div>
+            <div class="h-30 border-bottom">
+            </div>
+            <div class="h-30 border-left"></div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <div class="absolute option-wrapper f-grow" (click)="closePopover()" *ngIf="isPopoverVisible">
+    <div class="d-inline-flex f-col absolute" [ngStyle]="popoverStyles">
+      <button class="option" (click)="optionSelecting('step')">Step</button>
+      <button class="option" (click)="optionSelecting('condition')">Condition</button>
+    </div>
+  </div>
+</div>
+<ng-template #addbutton let-arr="arr" let-index="index">
+  <div>
+    <div class="grid-two-column">
+      <div class="h-30"></div>
+      <div class="h-30 border-left"></div>
+    </div>
+    <div align="center" class="add-button d-inline-flex align-center justify-center cursor-pointer"
+      (click)="openOptions($event, arr, index)">
+      <svg viewBox="0 0 512 512">
+        <path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none"
+          stroke="currentColor" stroke-miterlimit="10" stroke-width="32" />
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"
+          d="M256 176v160M336 256H176" />
+      </svg>
+    </div>
+    <div class="grid-two-column">
+      <div class="h-30"></div>
+      <div class="h-30 border-left"></div>
+    </div>
+    <div class="arrow-down"></div>
+  </div>
+</ng-template>
